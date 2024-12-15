@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
-public static class OpenFileDialog
+public static class WindowsFileDialogs
 {
 
     #region Custom Data
@@ -65,6 +65,9 @@ public static class OpenFileDialog
     [DllImport("Comdlg32.dll", CharSet = CharSet.Auto, SetLastError = true)]
     private static extern bool GetOpenFileName(ref OPENFILENAME dialog);
 
+    [DllImport("Comdlg32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern bool GetSaveFileName(ref OPENFILENAME dialog);
+
     #endregion
 
     // ----------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +97,27 @@ public static class OpenFileDialog
 
     #endregion
 
+    private delegate bool FileDialogFunction(ref OPENFILENAME dialog);
+
+    #region Public Methods
+
     public static string OpenFile(string title, string initialDirectory = null, params Filter[] filters)
+    {
+        return ShowFileDialog(title, initialDirectory, filters, GetOpenFileName);
+    }
+
+    public static string SaveFile(string title, string initialDirectory = null, params Filter[] filters)
+    {
+        return ShowFileDialog(title, initialDirectory, filters, GetSaveFileName);
+    }
+
+    #endregion
+
+    // ----------------------------------------------------------------------------------------------------------------------------
+
+    #region Other
+
+    private static string ShowFileDialog(string title, string initialDirectory, Filter[] filters, FileDialogFunction getFileName)
     {
         string directory = Directory.GetCurrentDirectory();
 
@@ -104,7 +127,7 @@ public static class OpenFileDialog
 
             OPENFILENAME dialog = new OPENFILENAME(title, filter, initialDirectory);
 
-            if (GetOpenFileName(ref dialog))
+            if (getFileName(ref dialog))
             {
                 return dialog.lpstrFile;
             }
@@ -127,4 +150,7 @@ public static class OpenFileDialog
 
         return string.Join("", filters) + "\0";
     }
+
+    #endregion
+
 }
