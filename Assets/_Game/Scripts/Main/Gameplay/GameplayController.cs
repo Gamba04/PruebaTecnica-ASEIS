@@ -7,6 +7,8 @@ public class GameplayController : MonoBehaviour
     private HomeController homeController;
     [SerializeField]
     private BoxController boxController;
+    [SerializeField]
+    private AnalysisController analysisController;
 
     #region Init
 
@@ -30,11 +32,13 @@ public class GameplayController : MonoBehaviour
 
     private void OnHomeComplete()
     {
-        Button.Interactions = false;
+        //Button.Interactions = false;
 
         Texture2D image = homeController.GetImage();
 
         boxController.SetImage(image);
+        analysisController.SetImage(image);
+
         homeController.Exit();
     }
 
