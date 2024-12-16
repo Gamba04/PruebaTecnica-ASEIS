@@ -201,7 +201,7 @@ public class BasicButton : Button
     private Color prePress = new Color(1, 1, 1, 1);
     private ButtonState preState;
 
-    private void OnValidate()
+    protected override void OnValidate()
     {
         if (TargetTransform != null)
         {
