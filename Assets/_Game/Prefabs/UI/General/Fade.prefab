@@ -127,7 +127,7 @@ MonoBehaviour:
   fade: {fileID: 6400442492130966098}
   startWithFade: 1
   enableInteractionsAfterFade: 1
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.74509805, g: 0.69803923, b: 0.69411767, a: 1}
   transition:
     curve:
       serializedVersion: 2

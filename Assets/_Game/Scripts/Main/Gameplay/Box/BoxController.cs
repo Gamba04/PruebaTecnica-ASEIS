@@ -17,7 +17,9 @@ public class BoxController : MonoBehaviour
 
     public void Init()
     {
-        InitEvents();   
+        InitEvents();
+
+        box.Init();
     }
 
     private void InitEvents()
