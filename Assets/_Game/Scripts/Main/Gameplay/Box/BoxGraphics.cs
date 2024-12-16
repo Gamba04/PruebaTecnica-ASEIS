@@ -5,8 +5,11 @@ public class BoxGraphics : MonoBehaviour
     [Header("Components")]
     [SerializeField]
     private new MeshRenderer renderer;
+    [SerializeField]
+    private Animator anim;
 
     private readonly int mainTextureID = Shader.PropertyToID("_MainTex");
+    private readonly int revealID = Animator.StringToHash("Reveal");
 
     #region Public Methods
 
@@ -16,6 +19,11 @@ public class BoxGraphics : MonoBehaviour
 
         properties.SetTexture(mainTextureID, image);
         renderer.SetPropertyBlock(properties);
+    }
+
+    public void Reveal()
+    {
+        anim.SetTrigger(revealID);
     }
 
     #endregion

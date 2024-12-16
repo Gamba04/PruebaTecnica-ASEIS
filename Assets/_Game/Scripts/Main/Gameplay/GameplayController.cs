@@ -36,7 +36,7 @@ public class GameplayController : MonoBehaviour
 
         Texture2D image = homeController.GetImage();
 
-        boxController.SetImage(image);
+        boxController.Reveal(image);
         analysisController.SetImage(image);
 
         homeController.Exit();

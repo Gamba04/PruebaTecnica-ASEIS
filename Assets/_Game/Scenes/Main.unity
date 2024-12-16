@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 311414908}
+  anim: {fileID: 34380867}
 --- !u!4 &34380866
 Transform:
   m_ObjectHideFlags: 0
@@ -858,6 +859,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420034}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420035}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   m_Layer: 0
@@ -1026,6 +1028,33 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   camera: {fileID: 519420031}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a377a2edf0d07a84f8748fa0dff8b3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 784640889}
+        m_TargetAssemblyTypeName: BoxController, Assembly-CSharp
+        m_MethodName: OnCameraComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &534684098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1084,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 2.5
   m_Range: 15
   m_SpotAngle: 141.3
   m_InnerSpotAngle: 10.7
@@ -1194,6 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   box: {fileID: 34380865}
+  cameraAnim: {fileID: 519420030}
 --- !u!1 &862398042
 GameObject:
   m_ObjectHideFlags: 0
