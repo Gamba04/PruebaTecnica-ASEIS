@@ -50,15 +50,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.404, g: 0.38292176, b: 0.37940872, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c553ddb070330e5409968c5cafb61a8f, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 8167243a451b99641ad246e55bfdd563, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -170,17 +170,17 @@ MonoBehaviour:
     targetGraphic: {fileID: 2791301770018658124}
     targetSprite: {fileID: 0}
     disselected:
-      color: {r: 1, g: 1, b: 1, a: 1}
+      color: {r: 0.503, g: 0.47446102, b: 0.46732625, a: 1}
       localPosition: {x: 0, y: 0}
       localScale: {x: 1, y: 1}
     highlighted:
-      color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+      color: {r: 0.404, g: 0.38292176, b: 0.37940872, a: 1}
       localPosition: {x: 0, y: 0}
       localScale: {x: 1, y: 1}
     pressed:
-      color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+      color: {r: 0.249, g: 0.23487234, b: 0.23134042, a: 1}
       localPosition: {x: 0, y: 0}
-      localScale: {x: 1.2, y: 1.2}
+      localScale: {x: 1.05, y: 1.05}
     duration: 0.1
     transitionCurve:
       serializedVersion: 2

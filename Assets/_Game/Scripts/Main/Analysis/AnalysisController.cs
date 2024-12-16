@@ -20,6 +20,9 @@ public class AnalysisController : MonoBehaviour
     public void OnBtnExport()
     {
         string path = GetTargetPath();
+
+        if (path == null) return;
+
         List<Color> colors = ImageAnalyzer.GetPredominantColors(image, colorsAmount);
 
         ColorExporter.ExportColors(path, colors);
