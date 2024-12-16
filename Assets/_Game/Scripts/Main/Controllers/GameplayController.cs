@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameplayController : MonoBehaviour
@@ -6,10 +5,8 @@ public class GameplayController : MonoBehaviour
     [Header("Components")]
     [SerializeField]
     private HomeController homeController;
-
-    [Space]
-    [ReadOnly, SerializeField]
-    private Texture2D image;
+    [SerializeField]
+    private BoxController boxController;
 
     #region Init
 
@@ -35,10 +32,9 @@ public class GameplayController : MonoBehaviour
     {
         Button.Interactions = false;
 
-        image = homeController.GetImage();
+        Texture2D image = homeController.GetImage();
 
-        // Trigger BoxController
-
+        boxController.SetImage(image);
         homeController.Exit();
     }
 
