@@ -54,7 +54,7 @@ public class ImageSelector : MonoBehaviour
     {
         string initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
-        return WindowsFileDialogs.OpenFile("Select Image", initialDirectory, new WindowsFileDialogs.Filter("Image Files", "*.jpg", "*.png"));
+        return WindowsFileDialogs.OpenFile("Select Image", initialDirectory, new WindowsFileDialogs.Filter("Image Files", "*.jpg", "*.jpeg", "*.png"));
     }
 
     private void ApplyPath(string path)

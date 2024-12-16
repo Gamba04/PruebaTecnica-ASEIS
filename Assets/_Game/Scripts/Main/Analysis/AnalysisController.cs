@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,6 @@ public class AnalysisController : MonoBehaviour
     [Header("Settings")]
     [SerializeField]
     private uint colorsAmount = 3;
-
-    [Space]
-    [ReadOnly, SerializeField]
-    private List<Color> predominantColors;
 
     private Texture2D image;
 
@@ -22,7 +19,23 @@ public class AnalysisController : MonoBehaviour
 
     public void OnBtnExport()
     {
-        predominantColors = ImageAnalyzer.GetPredominantColors(image, colorsAmount);
+        string path = GetTargetPath();
+        List<Color> colors = ImageAnalyzer.GetPredominantColors(image, colorsAmount);
+
+        ColorExporter.ExportColors(path, colors);
+    }
+
+    #endregion
+
+    // ----------------------------------------------------------------------------------------------------------------------------
+
+    #region Other
+
+    private string GetTargetPath()
+    {
+        string initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+        return WindowsFileDialogs.SaveFile("Save File", initialDirectory, new WindowsFileDialogs.Filter("CSV", "*.csv"));
     }
 
     #endregion
