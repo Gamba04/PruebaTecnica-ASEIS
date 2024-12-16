@@ -44,7 +44,7 @@ namespace Editor
 
         #endregion
 
-        private const string foldersDataPath = "Assets/_Game/Scripts/Utilities/Gamba Utilities/_Editor/Editor Drawers/Project Drawer/FoldersData.json";
+        private const string foldersDataPath = "Assets/_Game/Scripts/Utilities/GambaUtilities/_Editor/Editor Drawers/Project Drawer/FoldersData.json";
 
         private static readonly char separator = Path.AltDirectorySeparatorChar;
 

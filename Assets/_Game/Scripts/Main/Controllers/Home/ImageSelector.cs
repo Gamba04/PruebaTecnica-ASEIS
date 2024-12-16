@@ -1,8 +1,9 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FileSelector : MonoBehaviour
+public class ImageSelector : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField]
@@ -10,13 +11,13 @@ public class FileSelector : MonoBehaviour
 
     private string path;
 
-    public string Path => path;
+    public event Action onPathApplied;
 
-    #region Public Methods
+    #region Events
 
-    public void SelectFile()
+    public void OnBtnOpen()
     {
-        string path = GetFilePath();
+        string path = OpenFile();
 
         if (path != null) ApplyPath(path);
     }
@@ -25,9 +26,31 @@ public class FileSelector : MonoBehaviour
 
     // ----------------------------------------------------------------------------------------------------------------------------
 
+    #region Public Methods
+
+    public Texture2D GetImage()
+    {
+        if (File.Exists(path))
+        {
+            byte[] data = File.ReadAllBytes(path);
+
+            Texture2D texture = new Texture2D(0, 0, TextureFormat.ARGB32, false);
+
+            texture.LoadImage(data);
+
+            return texture;
+        }
+
+        return null;
+    }
+
+    #endregion
+
+    // ----------------------------------------------------------------------------------------------------------------------------
+
     #region Other
 
-    private string GetFilePath()
+    private string OpenFile()
     {
         string initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
@@ -39,6 +62,8 @@ public class FileSelector : MonoBehaviour
         this.path = path;
 
         text.text = path;
+
+        onPathApplied?.Invoke();
     }
 
     #endregion
