@@ -8,8 +8,12 @@ public class HomeController : MonoBehaviour
     private ImageSelector imageSelector;
     [SerializeField]
     private ButtonDisabler startButton;
+    [SerializeField]
+    private Animator anim;
 
     public event Action onComplete;
+
+    private readonly int hideID = Animator.StringToHash("Hide");
 
     #region Init
 
@@ -50,9 +54,9 @@ public class HomeController : MonoBehaviour
         return imageSelector.GetImage();
     }
 
-    public void Exit()
+    public void Hide()
     {
-
+        anim.SetTrigger(hideID);
     }
 
     #endregion

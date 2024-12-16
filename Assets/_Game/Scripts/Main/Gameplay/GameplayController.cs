@@ -17,11 +17,13 @@ public class GameplayController : MonoBehaviour
         InitEvents();
 
         homeController.Init();
+        boxController.Init();
     }
 
     private void InitEvents()
     {
         homeController.onComplete += OnHomeComplete;
+        boxController.onComplete += OnBoxComplete;
     }
 
     #endregion
@@ -32,14 +34,19 @@ public class GameplayController : MonoBehaviour
 
     private void OnHomeComplete()
     {
-        //Button.Interactions = false;
+        Button.Interactions = false;
 
         Texture2D image = homeController.GetImage();
 
         boxController.Reveal(image);
         analysisController.SetImage(image);
 
-        homeController.Exit();
+        homeController.Hide();
+    }
+
+    private void OnBoxComplete()
+    {
+        analysisController.Reveal();
     }
 
     #endregion

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BoxGraphics : MonoBehaviour
@@ -7,6 +8,8 @@ public class BoxGraphics : MonoBehaviour
     private new MeshRenderer renderer;
     [SerializeField]
     private Animator anim;
+
+    public event Action onComplete;
 
     private readonly int mainTextureID = Shader.PropertyToID("_MainTex");
     private readonly int revealID = Animator.StringToHash("Reveal");
@@ -24,6 +27,11 @@ public class BoxGraphics : MonoBehaviour
     public void Reveal()
     {
         anim.SetTrigger(revealID);
+    }
+
+    public void OnAnimComplete()
+    {
+        onComplete?.Invoke();
     }
 
     #endregion

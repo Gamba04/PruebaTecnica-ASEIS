@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class AnalysisController : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField]
+    private Animator anim;
+
     [Header("Settings")]
     [SerializeField]
     private uint colorsAmount = 3;
 
     private Texture2D image;
 
+    private readonly int revealID = Animator.StringToHash("Reveal");
+
     #region Public Methods
 
     public void SetImage(Texture2D image)
     {
         this.image = image;
+    }
+
+    public void Reveal()
+    {
+        anim.SetTrigger(revealID);
+    }
+
+    public void OnAnimComplete()
+    {
+        Button.Interactions = true;
     }
 
     public void OnBtnExport()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BoxController : MonoBehaviour
@@ -8,7 +9,25 @@ public class BoxController : MonoBehaviour
     [SerializeField]
     private Animator cameraAnim;
 
+    public event Action onComplete;
+
     private readonly int revealID = Animator.StringToHash("Reveal");
+
+    #region Init
+
+    public void Init()
+    {
+        InitEvents();   
+    }
+
+    private void InitEvents()
+    {
+        box.onComplete += onComplete;
+    }
+
+    #endregion
+
+    // ----------------------------------------------------------------------------------------------------------------------------
 
     #region Public Methods
 
