@@ -24,7 +24,7 @@ public static class ImageAnalyzer
         {
             for (int y = 0; y < image.height; y++)
             {
-                Color color = image.GetPixel(x, y);
+                Color color = RoundColor(image.GetPixel(x, y));
 
                 if (data.ContainsKey(color))
                 {
@@ -40,5 +40,23 @@ public static class ImageAnalyzer
         }
 
         return data;
+    }
+
+    private static Color RoundColor(Color color)
+    {
+        float r = RoundComponent(color.r);
+        float g = RoundComponent(color.g);
+        float b = RoundComponent(color.b);
+
+        return new Color(r, g, b);
+
+        static float RoundComponent(float value)
+        {
+            value *= 100;
+            value = Mathf.Round(value);
+            value /= 100;
+
+            return value;
+        }
     }
 }

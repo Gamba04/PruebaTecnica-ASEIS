@@ -45,6 +45,10 @@ public abstract class Button : MonoBehaviour
     public bool pressed;
 
     public bool interactable = true;
+
+    [SerializeField]
+    private bool ignoreInteractions;
+
     public TargetSpace targetSpace;
 
     [Space]
@@ -89,7 +93,7 @@ public abstract class Button : MonoBehaviour
         {
             if (NewAdvancedSettings != null)
             {
-                if (Interactions && interactable)
+                if (interactable && (ignoreInteractions || Interactions))
                 {
                     CheckInteraction();
                 }

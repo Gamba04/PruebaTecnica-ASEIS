@@ -1231,6 +1231,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3737770ace74ad479049ee7e1b68fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 593286649}
+  delay: 0.4
+--- !u!114 &593286649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2791301770791635807, guid: e2eedd73705393f4184271605b36904b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1743152323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593286646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417ab189302224046861671e672e69f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &634222679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2545,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 20363269}
+    - target: {fileID: 2791301770791635807, guid: e2eedd73705393f4184271605b36904b,
+        type: 3}
+      propertyPath: ignoreInteractions
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2791301770791635807, guid: e2eedd73705393f4184271605b36904b,
         type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.size
