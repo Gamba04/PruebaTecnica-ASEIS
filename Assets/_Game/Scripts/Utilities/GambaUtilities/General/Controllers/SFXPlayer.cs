@@ -8,6 +8,7 @@ public enum SFXTag
 {
     ButtonHover,
     ButtonClick,
+    BoxReveal,
 }
 
 /// <summary> SFX Loop sounds. </summary>

@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420030}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   m_Layer: 0
@@ -1043,7 +1044,7 @@ MonoBehaviour:
     aspect: {x: 21, y: 9}
     size: 5
     ratio: 2.3333333
-  currentRatio: 1.7777778
+  currentRatio: 1.7759434
   tangents: 0
   curve:
     serializedVersion: 2
@@ -1106,6 +1107,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3fb2946f7539524eba5e3195c61e3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: 02000000
 --- !u!1 &534684098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,14 +1773,20 @@ MonoBehaviour:
     m_RotationOrder: 4
   doubleSoundsSeparation: 0.05
   sfxClips:
-  - name: 'ButtonHover: 338229__fachii__button-hover'
+  - name: 'ButtonHover: Button_Hover'
     clip: {fileID: 8300000, guid: c36a571a3260fb14687d3d4f073c70b8, type: 3}
     volume: 1
     spatialBlend: 0
     range: 5
     mixer: {fileID: 0}
-  - name: 'ButtonClick: 506052__mellau__button-click-3'
+  - name: 'ButtonClick: Button_Click'
     clip: {fileID: 8300000, guid: fb3a26f136f1887419dda54a6caacbc6, type: 3}
+    volume: 1
+    spatialBlend: 0
+    range: 5
+    mixer: {fileID: 0}
+  - name: 'BoxReveal: Box_Reveal'
+    clip: {fileID: 8300000, guid: eda38785b11e9b243984ea3acaaa4a47, type: 3}
     volume: 1
     spatialBlend: 0
     range: 5
@@ -3045,7 +3065,7 @@ PrefabInstance:
     - target: {fileID: 3862477723454130714, guid: a5f14e67a86339846af0db3c7535eb34,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 6580.0005
+      value: 6572.0757
       objectReference: {fileID: 0}
     - target: {fileID: 3862477723454130714, guid: a5f14e67a86339846af0db3c7535eb34,
         type: 3}
