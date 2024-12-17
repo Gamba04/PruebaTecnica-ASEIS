@@ -8,6 +8,8 @@ public class BoxGraphics : MonoBehaviour
     private new MeshRenderer renderer;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private ParticleSystem particles;
 
     [Header("Settings")]
     [SerializeField]
@@ -73,6 +75,7 @@ public class BoxGraphics : MonoBehaviour
     public void Reveal()
     {
         anim.SetTrigger(revealID);
+        particles.Play();
 
         textureTransition.StartTransition(targetFactor);
     }

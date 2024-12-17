@@ -2,12 +2,7 @@
 {
     Properties
     {
-        _MainTex ("Albedo", 2D) = "white" {}
         _Color ("Color", Color) = (1, 1, 1, 1)
-
-        [Space(20)]
-        _Normal ("Normal", 2D) = "white" {}
-        _NormalAmount ("Normal Multiplier", float) = 1
 
         [Space(20)]
         _Glossiness ("Smoothness", Range(0, 1)) = 0.5
@@ -17,6 +12,7 @@
         _Factor ("Factor", Range(0, 1)) = 0.0
         _Treshold("Treshold", Range(0, 1)) = 0.0
         _Noise ("Noise", 2D) = "white" {}
+        _MainTex ("Albedo", 2D) = "white" {}
         _OverrideTexture ("Override Texture", 2D) = "white" {}
     }
 
@@ -31,7 +27,6 @@
         #pragma surface surf Standard fullforwardshadows
 
         sampler2D _MainTex;
-        sampler2D _Normal;
         sampler2D _Noise;
         sampler2D _OverrideTexture;
 
@@ -62,10 +57,6 @@
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = overrideTex.a;
-
-            float3 normal = UnpackNormal(tex2D(_Normal, IN.uv_MainTex));
-            normal.xy *= _NormalAmount;
-            o.Normal = normal;
         }
 
         ENDCG
