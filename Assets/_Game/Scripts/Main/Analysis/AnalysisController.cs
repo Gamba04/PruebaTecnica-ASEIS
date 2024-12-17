@@ -54,7 +54,7 @@ public class AnalysisController : MonoBehaviour
     {
         string initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-        return WindowsFileDialogs.SaveFile("Save File", initialDirectory, new WindowsFileDialogs.Filter("CSV", "*.csv"));
+        return WindowsFileDialogs.SaveFile("Save File", initialDirectory, "Export.csv", "csv", new WindowsFileDialogs.Filter("CSV", "*.csv"));
     }
 
     #endregion

@@ -43,22 +43,33 @@ public static class WindowsFileDialogs
         public int dwReserved;
         public int FlagsEx;
 
+        private const int MAX_PATH_SIZE = 260;
+
         private const int OFN_EXPLORER = 0x00080000;
         private const int OFN_FILEMUSTEXIST = 0x00001000;
         private const int OFN_PATHMUSTEXIST = 0x00000800;
         private const int OFN_DONTADDTORECENT = 0x02000000;
+        private const int OFN_NONETWORKBUTTON = 0x00020000;
+        private const int OFN_OVERWRITEPROMPT = 0x00000002;
+        private const int OFN_EXTENSIONDIFFERENT = 0x00000400;
 
-        public OPENFILENAME(string title, string filter, string initialDirectory = null)
+        public OPENFILENAME(string title, string filter, string initialDirectory, string defaultFileName, string targetExtension)
         {
-            this = new OPENFILENAME();
+            char[] fileChars = new char[MAX_PATH_SIZE];
 
-            lpstrTitle = title;
-            lpstrFilter = filter;
-            lpstrInitialDir = initialDirectory;
-            Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_DONTADDTORECENT;
-            lpstrFile = new string(new char[256]);
-            nMaxFile = lpstrFile.Length;
-            lStructSize = Marshal.SizeOf(this);
+            if (defaultFileName != null) defaultFileName.CopyTo(0, fileChars, 0, defaultFileName.Length);
+
+            this = new OPENFILENAME()
+            {
+                lpstrTitle = title,
+                lpstrFilter = filter,
+                lpstrInitialDir = initialDirectory,
+                lpstrDefExt = targetExtension,
+                Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_DONTADDTORECENT | OFN_NONETWORKBUTTON | OFN_OVERWRITEPROMPT | OFN_EXTENSIONDIFFERENT,
+                lpstrFile = new string(fileChars),
+                nMaxFile = MAX_PATH_SIZE,
+                lStructSize = Marshal.SizeOf(typeof(OPENFILENAME))
+            };
         }
     }
 
@@ -103,12 +114,12 @@ public static class WindowsFileDialogs
 
     public static string OpenFile(string title, string initialDirectory = null, params Filter[] filters)
     {
-        return ShowFileDialog(title, initialDirectory, filters, GetOpenFileName);
+        return ShowFileDialog(title, initialDirectory, null, null, filters, GetOpenFileName);
     }
 
-    public static string SaveFile(string title, string initialDirectory = null, params Filter[] filters)
+    public static string SaveFile(string title, string initialDirectory = null, string defaultFileName = null, string targetExtension = null, params Filter[] filters)
     {
-        return ShowFileDialog(title, initialDirectory, filters, GetSaveFileName);
+        return ShowFileDialog(title, initialDirectory, defaultFileName, targetExtension, filters, GetSaveFileName);
     }
 
     #endregion
@@ -117,7 +128,7 @@ public static class WindowsFileDialogs
 
     #region Other
 
-    private static string ShowFileDialog(string title, string initialDirectory, Filter[] filters, FileDialogFunction getFileName)
+    private static string ShowFileDialog(string title, string initialDirectory, string defaultFileName, string targetExtension, Filter[] filters, FileDialogFunction getFileName)
     {
         string directory = Directory.GetCurrentDirectory();
 
@@ -125,11 +136,15 @@ public static class WindowsFileDialogs
         {
             string filter = GetFilterString(filters);
 
-            OPENFILENAME dialog = new OPENFILENAME(title, filter, initialDirectory);
+            OPENFILENAME dialog = new OPENFILENAME(title, filter, initialDirectory, defaultFileName, targetExtension);
 
             if (getFileName(ref dialog))
             {
-                return dialog.lpstrFile;
+                string path = dialog.lpstrFile;
+
+                if (targetExtension != null) path = Path.ChangeExtension(path, targetExtension);
+
+                return path;
             }
 
             return null;
