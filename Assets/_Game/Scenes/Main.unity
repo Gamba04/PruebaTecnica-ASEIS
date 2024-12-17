@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer: {fileID: 311414908}
   anim: {fileID: 34380867}
-  targetFactor: 0.5
+  targetFactor: 0.55
   textureTransition:
     curve:
       serializedVersion: 2
@@ -1759,14 +1759,14 @@ MonoBehaviour:
     m_RotationOrder: 4
   doubleSoundsSeparation: 0.05
   sfxClips:
-  - name: 'ButtonHover: No clip'
-    clip: {fileID: 0}
+  - name: 'ButtonHover: 338229__fachii__button-hover'
+    clip: {fileID: 8300000, guid: c36a571a3260fb14687d3d4f073c70b8, type: 3}
     volume: 1
     spatialBlend: 0
     range: 5
     mixer: {fileID: 0}
-  - name: 'ButtonClick: No clip'
-    clip: {fileID: 0}
+  - name: 'ButtonClick: 506052__mellau__button-click-3'
+    clip: {fileID: 8300000, guid: fb3a26f136f1887419dda54a6caacbc6, type: 3}
     volume: 1
     spatialBlend: 0
     range: 5
