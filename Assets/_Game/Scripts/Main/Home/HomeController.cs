@@ -7,7 +7,7 @@ public class HomeController : MonoBehaviour
     [SerializeField]
     private ImageSelector imageSelector;
     [SerializeField]
-    private ButtonDisabler startButton;
+    private ButtonDisabler loadButton;
     [SerializeField]
     private Animator anim;
 
@@ -35,10 +35,10 @@ public class HomeController : MonoBehaviour
 
     private void OnPathApplied()
     {
-        startButton.SetDisabled(false);
+        loadButton.SetDisabled(false);
     }
 
-    public void OnBtnStart()
+    public void OnBtnLoad()
     {
         onComplete?.Invoke();
     }
